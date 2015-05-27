@@ -1,0 +1,30 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.0",
+  "description": "Small description for <%= name %> goes here",
+  "private": true,
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "ember server",
+    "build": "ember build",
+    "test": "ember test"
+  },
+  "repository": "",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "broccoli-asset-rev": "^2.0.2",
+    "broccoli-concat": "0.0.13",
+    "broccoli-stew": "^0.3.0",
+    "ember-cli": "<%= emberCLIVersion %>",
+    "ember-cli-babel": "^5.0.0",
+    "ember-cli-dependency-checker": "^1.0.0",
+    "ember-cli-uglify": "^1.0.1"
+  }
+}

@@ -9,7 +9,7 @@ function setupControllers() {
   Object.keys(require.entries).forEach(function(module) {
     const match = /^.*\/controllers\/(.*)/.exec(module);
     if (match) {
-      const [_, controllerName] = match;
+      const controllerName = classify(match.pop());
       const controller = require(module)['default'];
       app.controller(controllerName, controller);
     }

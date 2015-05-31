@@ -7,7 +7,7 @@ export default function setupRouter() {
         .state('index', {
           url: '/',
           templateUrl: 'index.html',
-          controller: 'index'
+          controller: 'IndexController'
         });
 
       $urlRouterProvider.otherwise('/');

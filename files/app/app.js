@@ -1,9 +1,8 @@
 import angular from 'angular';
-import setupRouter from './router';
 import setupTemplates from './templates';
 import { camelize, classify } from './inflection';
 
-const app = angular.module('<%= modulePrefix %>', ['templates', 'router']);
+const app = angular.module('<%= modulePrefix %>', ['ui.router', 'templates']);
 
 function setupControllers() {
   Object.keys(require.entries).forEach(function(module) {
@@ -27,10 +26,20 @@ function setupDirectives() {
   });
 }
 
+function setupConfigs() {
+  Object.keys(require.entries).forEach(function(module) {
+    const match = /^.*\/configs\/(.*)/.exec(module);
+    if (match) {
+      let config = require(module)['default'];
+      app.config(config);
+    }
+  });
+}
+
 export default function() {
   setupTemplates();
   setupControllers();
-  setupRouter();
+  setupConfigs();
   setupDirectives();
 
   angular.bootstrap(document, ['<%= modulePrefix %>']);

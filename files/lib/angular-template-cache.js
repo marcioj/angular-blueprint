@@ -5,9 +5,10 @@ const HEADER = 'export default function setupTemplates() { \nangular.module("tem
 const FOOTER = '} ]); \n};';
 
 function angularTemplateCache(inputTree, options) {
-  var tree = map(inputTree, function(content, relativePath) {
-    const matches = /^.*\/templates\/(.*)/.exec(relativePath);
-    const templateName = matches.pop();
+  var tree = map(inputTree, '**/*.html', function(content, relativePath) {
+    const parts = relativePath.split('/');
+    parts.shift();
+    const templateName = parts.join('/');
     content = content.replace(/\n/g, "\\n").replace(/"/g, '\\"');
     return '$templateCache.put("' + templateName + '", "' + content + '");\n';
   });

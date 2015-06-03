@@ -18,7 +18,7 @@ EmberApp.prototype.super$contentFor = EmberApp.prototype.contentFor;
 EmberApp.prototype.contentFor = function(config, match, type) {
   var content = this.super$contentFor(config, match, type);
   if (type === 'body') {
-    content += '<div ui-view></div>';
+    content += '<ng-view />';
   }
   return content;
 };
@@ -36,11 +36,12 @@ var app = new EmberApp({
 });
 
 app.import('bower_components/angular/angular.js');
-app.import('bower_components/angular-ui-router/release/angular-ui-router.js');
+app.import('bower_components/angular-route/angular-route.js');
 app.import('vendor/shims.js');
 
 app.registry.add('template', {
   name: 'angular-template-cache',
+  ext: 'html',
   toTree: function(tree) {
     return angularTemplateCache(tree, { name: app.name });
   }

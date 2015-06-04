@@ -18,7 +18,7 @@ EmberApp.prototype.super$contentFor = EmberApp.prototype.contentFor;
 EmberApp.prototype.contentFor = function(config, match, type) {
   var content = this.super$contentFor(config, match, type);
   if (type === 'body') {
-    content += '<ng-view />';
+    content += '<div id="angular-app"><ng-view /></div>';
   } else if (type === 'test-body') {
     content += '<div id="angular-testing"></div>';
   }

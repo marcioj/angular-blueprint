@@ -14,6 +14,6 @@ angular.module('routes', ['ngRoute'])
 
 export default function(element) {
   setupTemplates();
-  angular.bootstrap(element || document, ['<%= modulePrefix %>']);
+  angular.bootstrap(element || document.getElementById('angular-app'), ['<%= modulePrefix %>']);
 }
 

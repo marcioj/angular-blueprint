@@ -1,5 +1,5 @@
 describe('MainCtrl', function() {
-  beforeEach(module('test-angular'));
+  beforeEach(module('<%= modulePrefix %>'));
 
   it('displays a message', inject(function($controller) {
     let $scope = {};

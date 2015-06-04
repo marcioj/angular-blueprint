@@ -19,13 +19,14 @@ EmberApp.prototype.contentFor = function(config, match, type) {
   var content = this.super$contentFor(config, match, type);
   if (type === 'body') {
     content += '<ng-view />';
+  } else if (type === 'test-body') {
+    content += '<div id="angular-testing"></div>';
   }
   return content;
 };
 
 var app = new EmberApp({
   vendorFiles: {
-    'jquery.js': false,
     'ember.js': false,
     'handlebars.js': false,
     'ember-testing.js': false,
@@ -38,6 +39,15 @@ var app = new EmberApp({
 app.import('bower_components/angular/angular.js');
 app.import('bower_components/angular-route/angular-route.js');
 app.import('vendor/shims.js');
+
+app.import('bower_components/jasmine/lib/jasmine-core/jasmine.css', { type: 'test' });
+app.import('bower_components/jasmine/lib/jasmine-core/jasmine.js', { type: 'test' });
+app.import('bower_components/jasmine/lib/jasmine-core/jasmine-html.js', { type: 'test' });
+app.import('bower_components/jasmine/lib/jasmine-core/boot.js', { type: 'test' });
+
+app.import('bower_components/angular-mocks/angular-mocks.js', { type: 'test' });
+
+app.import('vendor/test-loader.js', { type: 'test' });
 
 app.registry.add('template', {
   name: 'angular-template-cache',

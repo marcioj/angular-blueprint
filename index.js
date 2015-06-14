@@ -7,7 +7,7 @@ module.exports = {
       name: name,
       modulePrefix: name,
       namespace: name,
-      emberCLIVersion: '0.2.5'
+      emberCLIVersion: '0.2.7'
     };
   }
 }

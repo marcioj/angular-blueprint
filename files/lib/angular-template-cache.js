@@ -1,8 +1,8 @@
 var map = require('broccoli-stew/lib/map');
 var concat = require('broccoli-concat');
 
-const HEADER = 'export default function setupTemplates() { \nangular.module("templates", []).run(["$templateCache", function($templateCache) {\n';
-const FOOTER = '} ]); \n};';
+const HEADER = 'export default angular.module("templates", []).run(["$templateCache", function($templateCache) {\n';
+const FOOTER = '} ]);';
 
 function angularTemplateCache(inputTree, options) {
   var tree = map(inputTree, '**/*.html', function(content, relativePath) {
@@ -15,7 +15,7 @@ function angularTemplateCache(inputTree, options) {
 
   tree = concat(tree, {
     inputFiles: ['**/*.html'],
-    outputFile: '/' + options.name + '/templates.js',
+    outputFile: '/' + options.name + '/cached_templates.js',
     wrapInEval: false,
     wrapInFunction: false,
     header: HEADER,

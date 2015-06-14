@@ -17,6 +17,10 @@
   <body>
     {{content-for 'body'}}
 
+    <div ng-app="<%= name %>">
+      <ng-view />
+    </div>
+
     <script src="assets/vendor.js"></script>
     <script src="assets/<%= name %>.js"></script>
 

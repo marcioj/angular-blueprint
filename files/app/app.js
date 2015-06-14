@@ -11,8 +11,3 @@ angular.module('controllers', [])
 
 angular.module('routes', ['ngRoute'])
   .config(mainRoutes);
-
-export default function(element) {
-  angular.bootstrap(element || document.getElementById('angular-app'), ['<%= modulePrefix %>']);
-}
-

@@ -8,21 +8,9 @@ EmberApp.prototype._contentForAppBoot = function(content, config) {
   content.push('  require("' + config.modulePrefix + '/tests/test-helper");');
   if (this.options.autoRun) {
     content.push('} else {');
-    content.push('require("' + config.modulePrefix + '/app")["default"]();');
+    content.push('require("' + config.modulePrefix + '/app");');
   }
   content.push('}');
-};
-
-EmberApp.prototype.super$contentFor = EmberApp.prototype.contentFor;
-
-EmberApp.prototype.contentFor = function(config, match, type) {
-  var content = this.super$contentFor(config, match, type);
-  if (type === 'body') {
-    content += '<div id="angular-app"><ng-view /></div>';
-  } else if (type === 'test-body') {
-    content += '<div id="angular-testing"></div>';
-  }
-  return content;
 };
 
 var app = new EmberApp({
